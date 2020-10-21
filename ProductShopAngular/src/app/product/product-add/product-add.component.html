@@ -1,0 +1,24 @@
+<h1>Register product</h1>
+<div class="container">
+  <form [formGroup]="productForm" (ngSubmit)="createProduct()">
+    <label>
+      Product name:
+      <input id="name" type="text" formControlName="name" minlength="3" maxlength="13">
+    </label>
+
+    <label>
+      Product type:
+      <input type="text" formControlName="type" minlength="3" maxlength="13">
+    </label>
+
+    <label>
+      Product price:
+      <input type="number" formControlName="price">
+    </label>
+
+    <button type="submit" [disabled]="!productForm.valid">Create</button>
+
+  </form>
+  <button (click)="goBack();">Go back</button>
+</div>
+

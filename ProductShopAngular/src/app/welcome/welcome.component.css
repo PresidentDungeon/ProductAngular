@@ -1,0 +1,44 @@
+
+h1 {
+  padding: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+section{
+  position: relative;
+  top: 5px;
+}
+
+section .row img {
+  margin: 0 -11px 30px;
+  width: 100%;
+}
+
+.imageTxt{
+  font-weight: 700;
+  position: relative;
+  left: 250px;
+}
+
+.btn{
+  position: relative;
+  left: 500px;
+  border: 1px black inset;
+  width: 150px;
+  height: 60px;
+  background-image: url("src/assets/images/button.jpg");
+  cursor: pointer;
+}
+
+.btn h3{
+  margin: 18px;
+  font-size: 16px;
+  position: relative;
+  left: -8px;
+}
+
+.small-txt{
+  font-size: 10px;
+  text-align: center;
+}

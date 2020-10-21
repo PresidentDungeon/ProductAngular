@@ -1,0 +1,30 @@
+.container{
+  background-color: #333333;
+}
+
+footer h3, p{
+  color: white;
+}
+
+footer p{
+  color: rgba(255,251,251,0.81);
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.row{
+  position: relative;
+  left: 20px;
+}
+
+.cat{
+  position: relative;
+  top: 35px;
+}
+
+label{
+  color: white;
+  position: relative;
+  left: 20px;
+  top: -20px;
+}

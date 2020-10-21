@@ -1,0 +1,38 @@
+<h1>Product Details</h1>
+<h2 *ngIf="loading">Loading...</h2>
+<div class="container" *ngIf="product">
+  <h1>{{this.product.name}} ({{this.product.id}}) - {{product.price}} Dkk.</h1>
+  <h2>{{this.product.type}}</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+    <label>
+      Product name:
+      <input id="name" type="text" formControlName="name" minlength="3" maxlength="13">
+    </label>
+
+    <label>
+      Product type:
+      <input type="text" formControlName="type" minlength="3" maxlength="13">
+    </label>
+
+    <label>
+      Product price:
+      <input type="number" formControlName="price">
+    </label>
+
+    <label>
+      Product upload:
+      <input type="datetime-local" formControlName="date">
+    </label>
+
+    <button type="submit" [disabled]="!productForm.valid">Update</button>
+
+  </form>
+  <button (click)="goBack();">Go back</button>
+</div>
+
+<div class="container" *ngIf="found === false">
+  <h2>Product not found</h2>
+  <button class="update" (click)="goBack();">Go back</button>
+</div>
+
