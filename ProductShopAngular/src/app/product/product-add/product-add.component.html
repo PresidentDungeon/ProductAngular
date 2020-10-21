@@ -7,14 +7,18 @@
     </label>
 
     <label>
-      Product type:
-      <input type="text" formControlName="type" minlength="3" maxlength="13">
-    </label>
-
-    <label>
       Product price:
       <input type="number" formControlName="price">
     </label>
+
+    <label>
+      Product type:
+      <select formControlName="type">
+        <option value="" disabled>Choose Type</option>
+        <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+      </select>
+    </label>
+
 
     <button type="submit" [disabled]="!productForm.valid">Create</button>
 

@@ -2,7 +2,7 @@
 <h2 *ngIf="loading">Loading...</h2>
 <div class="container" *ngIf="product">
   <h1>{{this.product.name}} ({{this.product.id}}) - {{product.price}} Dkk.</h1>
-  <h2>{{this.product.type}}</h2>
+  <h2>{{this.product.type.name}}</h2>
 
   <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
     <label>
@@ -11,13 +11,15 @@
     </label>
 
     <label>
-      Product type:
-      <input type="text" formControlName="type" minlength="3" maxlength="13">
+      Product price:
+      <input type="number" formControlName="price">
     </label>
 
     <label>
-      Product price:
-      <input type="number" formControlName="price">
+      Product type:
+      <select formControlName="type">
+        <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+      </select>
     </label>
 
     <label>

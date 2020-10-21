@@ -4,8 +4,9 @@ import {DatePipe, Location} from '@angular/common';
 import {ProductsService} from '../../shared/services/products.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { Validators } from '@angular/forms';
-import {Observable} from 'rxjs';
 import {Product} from "../../shared/models/Product";
+import {Type} from "../../shared/models/Type";
+import {TypesService} from "../../shared/services/types.service";
 
 @Component({
   selector: 'app-product-details',
@@ -16,6 +17,7 @@ import {Product} from "../../shared/models/Product";
 export class ProductDetailsComponent implements OnInit {
 
   product: Product;
+  types: Type[];
   found: boolean = true;
   loading: boolean = true;
 
@@ -26,17 +28,18 @@ export class ProductDetailsComponent implements OnInit {
     date: new FormControl('', [Validators.required])
   });
 
-  constructor(private productService: ProductsService, private route: ActivatedRoute, private location: Location, private datePipe: DatePipe) { }
+  constructor(private productService: ProductsService, private typeService: TypesService, private route: ActivatedRoute, private location: Location, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getProduct();
+    this.getTypes();
   }
 
   initialText(): void{
     if (this.product != null){
       this.productForm.patchValue({
         name: this.product.name,
-        type: this.product.type,
+        type: this.product.type.id,
         price: this.product.price,
         date: this.datePipe.transform(this.product.createdDate, 'yyyy-MM-ddTHH:mm')
       });
@@ -51,6 +54,10 @@ export class ProductDetailsComponent implements OnInit {
       () => {this.loading = false;});
   }
 
+  getTypes(): void{
+    this.typeService.getTypes().subscribe((types) => this.types = types);
+  }
+
   goBack(): void{
     this.location.back();
   }
@@ -58,7 +65,7 @@ export class ProductDetailsComponent implements OnInit {
   updateProduct(): void{
     const productData = this.productForm.value;
     this.product.name = productData.name;
-    this.product.type = productData.type;
+    this.product.type.id = productData.type;
     this.product.price = productData.price;
 
     let dateString = productData.date;
@@ -66,7 +73,6 @@ export class ProductDetailsComponent implements OnInit {
     date.setTime(date.getTime() + 2*60*60*1000);
 
     this.product.createdDate = new Date(date);
-
     this.productService.updateProduct(this.product).subscribe(product => this.getProduct());
   }
 

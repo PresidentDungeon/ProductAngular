@@ -1,7 +1,9 @@
-export class Product{
+import {Type} from "./Type";
+
+export interface Product{
   id: number;
   name: string;
-  type: string;
+  type: Type;
   price: number;
   createdDate: Date;
 }
