@@ -19,10 +19,17 @@
       </select>
     </label>
 
-
     <button type="submit" [disabled]="!productForm.valid">Create</button>
-
   </form>
   <button (click)="goBack();">Go back</button>
+
+  <div class="error">
+    <h6 class="errorName" *ngIf="productForm.get('name').invalid && productForm.get('name').dirty">Product name must be between 3-13 characters</h6>
+    <h6 class="errorNumber" *ngIf="productForm.get('price').invalid && productForm.get('price').dirty">Product price allowed between 0-99999</h6>
+  </div>
+
+
 </div>
+
+
 
