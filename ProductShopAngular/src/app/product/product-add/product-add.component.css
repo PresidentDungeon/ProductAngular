@@ -19,6 +19,10 @@ input, select {
   margin-left: 10px;
 }
 
+.colorSelect{
+  height: 80px;
+}
+
 label {
   display: flex;
   flex-direction: row;
@@ -27,6 +31,10 @@ label {
   width: 400px;
   line-height: 37px;
   margin-bottom: 10px;
+}
+
+.colorLabel{
+  line-height: 70px;
 }
 
 h1, h2{

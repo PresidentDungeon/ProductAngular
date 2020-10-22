@@ -1,6 +1,6 @@
 <h1>Product Details</h1>
 <h2 *ngIf="loading">Loading...</h2>
-<div class="container" *ngIf="product">
+<div class="container" *ngIf="!loading">
   <h1>{{this.product.name}} ({{this.product.id}}) - {{product.price}} Dkk.</h1>
   <h2>{{this.product.type.name}}</h2>
 
@@ -19,6 +19,14 @@
       Product type:
       <select formControlName="type">
         <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
+      </select>
+    </label>
+
+    <label class="colorLabel">
+      Product color:
+      <select class="colorSelect" multiple formControlName="color">
+        <option value="" disabled>Choose Color(s)</option>
+        <option *ngFor="let color of colors" [value]="color.id">{{color.colorDescription}}</option>
       </select>
     </label>
 
