@@ -4,12 +4,13 @@ import {DatePipe, Location} from '@angular/common';
 import {ProductsService} from '../../shared/services/products.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { Validators } from '@angular/forms';
-import {Product} from "../../shared/models/Product";
-import {Type} from "../../shared/models/Type";
-import {TypesService} from "../../shared/services/types.service";
-import {Color} from "../../shared/models/Color";
-import {ColorService} from "../../shared/services/color.service";
-import {ProductColors} from "../../shared/models/ProductColors";
+import {Product} from '../../shared/models/Product';
+import {Type} from '../../shared/models/Type';
+import {TypesService} from '../../shared/services/types.service';
+import {Color} from '../../shared/models/Color';
+import {ColorService} from '../../shared/services/color.service';
+import {ProductColors} from '../../shared/models/ProductColors';
+import {AuthenticationService} from '../../shared/services/authentication.service';
 
 @Component({
   selector: 'app-product-details',
@@ -24,6 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   colors: Color[];
   found: boolean = true;
   loading: boolean = true;
+  userRole: string;
 
   productForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -34,13 +36,14 @@ export class ProductDetailsComponent implements OnInit {
   });
 
   constructor(private productService: ProductsService, private typeService: TypesService,
-              private colorService: ColorService, private route: ActivatedRoute,
-              private location: Location, private datePipe: DatePipe) { }
+              private colorService: ColorService, private authService: AuthenticationService,
+              private route: ActivatedRoute, private location: Location, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getTypes();
     this.getColors();
     this.getProduct();
+    this.userRole = this.authService.getRole();
   }
 
   initialText(): void{

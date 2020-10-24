@@ -4,7 +4,7 @@
   <h1>{{this.product.name}} ({{this.product.id}}) - {{product.price}} Dkk.</h1>
   <h2>{{this.product.type.name}}</h2>
 
-  <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+  <form *ngIf="userRole === 'Admin'" [formGroup]="productForm" (ngSubmit)="updateProduct()">
     <label>
       Product name:
       <input id="name" type="text" formControlName="name" minlength="3" maxlength="13">

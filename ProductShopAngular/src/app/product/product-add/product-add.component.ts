@@ -3,13 +3,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { Validators } from '@angular/forms';
-import {ProductsService} from "../../shared/services/products.service";
-import {Product} from "../../shared/models/Product";
-import {Type} from "../../shared/models/Type";
-import {TypesService} from "../../shared/services/types.service";
-import {ColorService} from "../../shared/services/color.service";
-import {Color} from "../../shared/models/Color";
-import {ProductColors} from "../../shared/models/ProductColors";
+import {ProductsService} from '../../shared/services/products.service';
+import {Product} from '../../shared/models/Product';
+import {Type} from '../../shared/models/Type';
+import {TypesService} from '../../shared/services/types.service';
+import {ColorService} from '../../shared/services/color.service';
+import {Color} from '../../shared/models/Color';
+import {ProductColors} from '../../shared/models/ProductColors';
 
 @Component({
   selector: 'app-product-add',
@@ -57,7 +57,7 @@ export class ProductAddComponent implements OnInit {
 
     let productColor: ProductColors[] = [];
     for(let c of productData.color){
-      productColor.push({ColorID: c, Color: null})
+      productColor.push({ColorID: c, Color: null});
     }
 
     const product: Product = {
@@ -68,7 +68,8 @@ export class ProductAddComponent implements OnInit {
       createdDate: new Date(date),
       productColors: productColor
     };
-    this.productService.addProduct(product).subscribe(p => this.goBack());
+    this.productService.addProduct(product).subscribe(p => this.goBack(),
+        error => {if(error.errorCode === 401){this.router.navigate(['/login']);}});
   }
 
   initialText(): void{

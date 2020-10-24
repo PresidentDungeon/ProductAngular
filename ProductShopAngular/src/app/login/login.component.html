@@ -1,0 +1,26 @@
+<h1>ProductStore Login!</h1>
+
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <label>
+      Username:
+      <input id="username" type="text" formControlName="username">
+    </label>
+
+    <label>
+      Password:
+      <input type="password" formControlName="password">
+    </label>
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+  </form>
+
+
+  <div class="error">
+    <h6 class="errorUsername" *ngIf="loginForm.get('username').invalid && loginForm.get('username').dirty">Username is required</h6>
+    <h6 class="errorPassword" *ngIf="loginForm.get('password').invalid && loginForm.get('password').dirty">Password is required</h6>
+    <h6 class="errorMessage">{{errorMsg}}</h6>
+
+
+  </div>
+
+</div>

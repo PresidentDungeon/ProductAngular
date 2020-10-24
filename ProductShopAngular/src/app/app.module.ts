@@ -7,10 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ProductsComponent } from './product/products/products.component';
-import {ProductDetailsComponent} from "./product/product-details/product-details.component";
+import {ProductDetailsComponent} from './product/product-details/product-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ProductAddComponent} from "./product/product-add/product-add.component";
+import {ProductAddComponent} from './product/product-add/product-add.component';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     ProductsComponent,
     ProductDetailsComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

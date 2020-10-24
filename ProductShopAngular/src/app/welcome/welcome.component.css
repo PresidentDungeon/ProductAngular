@@ -11,8 +11,11 @@ section{
 }
 
 section .row img {
+  position: relative;
+  right: -100px;
   margin: 0 -11px 30px;
   width: 100%;
+  max-width:100%;
 }
 
 .imageTxt{

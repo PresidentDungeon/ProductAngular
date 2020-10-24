@@ -1,39 +1,46 @@
 import { Injectable } from '@angular/core';
-import {Observable, throwError} from 'rxjs';
-import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {Product} from "../models/Product";
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Product} from '../models/Product';
+import {AuthenticationService} from './authentication.service';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private productUrl = 'https://localhost:44320/api/product';
   private httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'my-auth-token'})
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthenticationService) {
   }
 
   addProduct(product: Product): Observable<Product>{
-    return this.http.post<Product>(this.productUrl, product, this.httpOptions);
+    this.setToken();
+    return this.http.post<Product>(environment.apiUrl + '/product', product, this.httpOptions);
   }
 
   getProducts(): Observable<Product[]>{
-      return this.http.get<Product[]>(this.productUrl);
+    return this.http.get<Product[]>(environment.apiUrl + '/product');
   }
 
   getProductById(id: number): Observable<Product>{
-    return this.http.get<Product>(this.productUrl + '/' + id);
+    return this.http.get<Product>(environment.apiUrl + '/product/' + id);
   }
 
   updateProduct(product: Product): Observable<Product>{
-    return this.http.put<Product>(this.productUrl + '/' + product.id, product, this.httpOptions);
+    this.setToken();
+    return this.http.put<Product>(environment.apiUrl + '/product/' + product.id, product, this.httpOptions);
   }
 
   deleteProduct(id: number): Observable<Product>{
-    return this.http.delete<Product>(this.productUrl + '/' + id, this.httpOptions);
+    this.setToken();
+    return this.http.delete<Product>(environment.apiUrl + '/product/' + id, this.httpOptions);
+  }
+
+  setToken(): void{
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'bearer ' + this.authService.getToken());
   }
 }
