@@ -10,6 +10,7 @@ import {ProductsService} from "../shared/products.service";
 export class ProductsComponent implements OnInit {
 
   products: Product[];
+  loading: boolean = true;
 
   constructor(private productService: ProductsService ) { }
   ngOnInit(): void {
@@ -17,7 +18,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts(): void{
-  this.productService.getProducts().subscribe((products) => this.products = products);
+  this.productService.getProducts().subscribe((products) => {this.products = products;}, error => {}, () => {this.loading = false;});
   }
 
   deleteProduct(id: number): void{

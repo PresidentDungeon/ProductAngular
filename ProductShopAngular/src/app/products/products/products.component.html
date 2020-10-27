@@ -2,8 +2,8 @@
 
   <h1 align="center">ProductShop Showcase</h1>
   <h3 align="center">Here is our products list:</h3>
-
-  <table class="table">
+  <h2 *ngIf="loading" align="center">Loading...</h2>
+  <table *ngIf="!loading" class="table">
     <tr>
       <th class="header1">ID</th>
       <th>Name</th>
@@ -19,5 +19,8 @@
       <td (click)="deleteProduct(product.id);"><button>X</button></td>
     </tr>
   </table>
+
+
+
   <button class="register" routerLink="register">Register now!</button>
 </div>

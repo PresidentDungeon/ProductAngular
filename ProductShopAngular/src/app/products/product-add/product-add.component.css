@@ -68,12 +68,22 @@ form button:disabled{
 .errorNumber{
   color: red;
   position: absolute;
-  top: 50px;
+  top: 54px;
 }
 
 .error{
   position: absolute;
-  top: 40px;
+  top: 36px;
   left: 685px;
-  width: 200px;
+  width: 300px;
+}
+
+input.ng-dirty.ng-invalid {
+  border: 1px solid red;
+}
+
+p{
+  position: relative;
+  top: 15px;
+  color: red;
 }

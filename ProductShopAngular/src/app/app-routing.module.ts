@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {WelcomeComponent} from './welcome/welcome.component';
-import {ProductsComponent} from './product/products/products.component';
-import {ProductDetailsComponent} from './product/product-details/product-details.component';
-import {ProductAddComponent} from './product/product-add/product-add.component';
+import {ProductsComponent} from './products/products/products.component';
+import {ProductDetailsComponent} from './products/product-details/product-details.component';
+import {ProductAddComponent} from './products/product-add/product-add.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './guard/AuthGuard';
 

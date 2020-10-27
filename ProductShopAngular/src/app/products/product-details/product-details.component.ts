@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe, Location} from '@angular/common';
 import {ProductsService} from '../shared/products.service';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import { Validators } from '@angular/forms';
 import {Product} from '../shared/Product';
 import {Type} from '../../types/shared/Type';
@@ -26,9 +26,10 @@ export class ProductDetailsComponent implements OnInit {
   found: boolean = true;
   loading: boolean = true;
   userRole: string;
+  error: string = '';
 
   productForm = new FormGroup({
-    name: new FormControl('', Validators.required),
+    name: new FormControl('', [Validators.required]),
     type: new FormControl('', Validators.required),
     price: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99999)]),
     color: new FormControl('', [Validators.required]),
@@ -37,7 +38,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private productService: ProductsService, private typeService: TypesService,
               private colorService: ColorService, private authService: AuthenticationService,
-              private route: ActivatedRoute, private location: Location, private datePipe: DatePipe) { }
+              private route: ActivatedRoute, private location: Location,
+              private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit(): void {
     this.getTypes();
@@ -108,7 +110,10 @@ export class ProductDetailsComponent implements OnInit {
 
     this.product.productColors = productColor;
 
-    this.productService.updateProduct(this.product).subscribe(product => this.getProduct());
+    this.productService.updateProduct(this.product).subscribe(product => this.getProduct(),
+      error => {this.error = error.error;
+        if(error.status === 401){this.router.navigate(['/login']);}
+      });
   }
 
 }

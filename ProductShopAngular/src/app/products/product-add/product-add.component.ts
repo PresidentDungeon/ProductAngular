@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import { Validators } from '@angular/forms';
 import {ProductsService} from '../shared/products.service';
 import {Product} from '../shared/Product';
@@ -28,6 +28,7 @@ export class ProductAddComponent implements OnInit {
   types: Type[];
   colors: Color[];
   loading: boolean = true;
+  error: string = '';
 
   constructor(private productService: ProductsService, private typeService: TypesService,
               private route: ActivatedRoute, private location: Location,
@@ -54,7 +55,6 @@ export class ProductAddComponent implements OnInit {
     const productData = this.productForm.value;
     let date = new Date();
     date.setTime(date.getTime() + 2*60*60*1000);
-
     let productColor: ProductColors[] = [];
     for(let c of productData.color){
       productColor.push({ColorID: c, Color: null});
@@ -68,7 +68,9 @@ export class ProductAddComponent implements OnInit {
       productColors: productColor
     };
     this.productService.addProduct(product).subscribe(p => this.goBack(),
-        error => {if(error.errorCode === 401){this.router.navigate(['/login']);}});
+        error => {this.error = error.error;
+                        if(error.status === 401){this.router.navigate(['/login']);}
+    });
   }
 
   initialText(): void{
@@ -76,5 +78,4 @@ export class ProductAddComponent implements OnInit {
         type: ""
       });
     }
-
 }
