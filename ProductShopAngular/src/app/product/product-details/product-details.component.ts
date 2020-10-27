@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {DatePipe, Location} from '@angular/common';
-import {ProductsService} from '../../shared/services/products.service';
+import {ProductsService} from '../shared/products.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { Validators } from '@angular/forms';
-import {Product} from '../../shared/models/Product';
-import {Type} from '../../shared/models/Type';
-import {TypesService} from '../../shared/services/types.service';
-import {Color} from '../../shared/models/Color';
-import {ColorService} from '../../shared/services/color.service';
-import {ProductColors} from '../../shared/models/ProductColors';
+import {Product} from '../shared/Product';
+import {Type} from '../../types/shared/Type';
+import {TypesService} from '../../types/shared/types.service';
+import {Color} from '../../colors/shared/Color';
+import {ColorService} from '../../colors/shared/color.service';
+import {ProductColors} from '../../colors/shared/ProductColors';
 import {AuthenticationService} from '../../shared/services/authentication.service';
 
 @Component({

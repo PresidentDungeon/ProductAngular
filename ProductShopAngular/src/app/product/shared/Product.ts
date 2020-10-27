@@ -1,5 +1,5 @@
-import {Type} from "./Type";
-import {ProductColors} from "./ProductColors";
+import {Type} from "../../types/shared/Type";
+import {ProductColors} from "../../colors/shared/ProductColors";
 
 export interface Product{
   id: number;

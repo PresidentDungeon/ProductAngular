@@ -3,13 +3,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { Validators } from '@angular/forms';
-import {ProductsService} from '../../shared/services/products.service';
-import {Product} from '../../shared/models/Product';
-import {Type} from '../../shared/models/Type';
-import {TypesService} from '../../shared/services/types.service';
-import {ColorService} from '../../shared/services/color.service';
-import {Color} from '../../shared/models/Color';
-import {ProductColors} from '../../shared/models/ProductColors';
+import {ProductsService} from '../shared/products.service';
+import {Product} from '../shared/Product';
+import {Type} from '../../types/shared/Type';
+import {TypesService} from '../../types/shared/types.service';
+import {ColorService} from '../../colors/shared/color.service';
+import {Color} from '../../colors/shared/Color';
+import {ProductColors} from '../../colors/shared/ProductColors';
 
 @Component({
   selector: 'app-product-add',
@@ -59,7 +59,6 @@ export class ProductAddComponent implements OnInit {
     for(let c of productData.color){
       productColor.push({ColorID: c, Color: null});
     }
-
     const product: Product = {
       id: 0,
       name: productData.name,
