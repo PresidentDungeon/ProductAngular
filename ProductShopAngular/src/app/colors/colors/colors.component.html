@@ -1,0 +1,20 @@
+<div class="container">
+
+  <h1 align="center">ProductShop Color Display</h1>
+  <h3 align="center">Here is our color list:</h3>
+  <h2 *ngIf="loading" align="center">Loading...</h2>
+  <table *ngIf="!loading" class="table">
+    <tr>
+      <th class="header1">ID</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+    <tr class="data" *ngFor="let color of colors">
+      <td><a class="data1" routerLink="/colors/{{color.id}}">{{color.id}}</a></td>
+      <td><a routerLink="/colors/{{color.id}}">{{color.colorDescription}}</a></td>
+      <td (click)="deleteColor(color.id);"><button>X</button></td>
+    </tr>
+  </table>
+
+  <button class="register" routerLink="register">Add color!</button>
+</div>

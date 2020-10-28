@@ -1,0 +1,40 @@
+a{
+  text-decoration: none;
+  color: #111111;
+}
+
+.data:hover a{
+  color: dimgrey;
+  cursor: pointer;
+}
+
+.table{
+  position: relative;
+  left: 426px;
+  width: calc(30% + 30px);
+  table-layout: fixed;
+  border-spacing: 15px 0px;
+  margin: 0px -15px;
+
+}
+
+.header1, .data1{
+  position: relative;
+  left: 55px;
+}
+
+.register{
+  position: relative;
+  left: 500px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormControl, FormGroup} from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -10,6 +9,7 @@ import {TypesService} from '../../types/shared/types.service';
 import {ColorService} from '../../colors/shared/color.service';
 import {Color} from '../../colors/shared/Color';
 import {ProductColors} from '../../colors/shared/ProductColors';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-add',
@@ -31,8 +31,7 @@ export class ProductAddComponent implements OnInit {
   error: string = '';
 
   constructor(private productService: ProductsService, private typeService: TypesService,
-              private route: ActivatedRoute, private location: Location,
-              private router: Router, private colorService: ColorService) { }
+              private location: Location, private router: Router, private colorService: ColorService) { }
 
   ngOnInit(): void {
     this.getTypes();

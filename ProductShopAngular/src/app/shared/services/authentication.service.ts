@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private loginUrl = 'https://localhost:44320/api/login';
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -16,7 +16,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(this.loginUrl, { username, password })
+    return this.http.post<any>(environment.apiUrl + '/login', { username, password })
       .pipe(map(response => {
         const token = response.token;
         const role = response.role;

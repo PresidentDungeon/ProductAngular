@@ -1,0 +1,21 @@
+<h1>Register color</h1>
+<div class="container">
+  <form [formGroup]="colorForm" (ngSubmit)="createColor()">
+    <label>
+      Color description:
+      <input id="name" type="text" formControlName="description" minlength="3" maxlength="13" pattern="^(?!.* {2})(?=\S)(?=.*\S$)[a-zA-Z0-9 ]+$">
+    </label>
+
+    <button type="submit" [disabled]="!colorForm.valid">Create</button>
+
+  </form>
+  <p align="center">{{error}}</p>
+  <button (click)="goBack();">Go back</button>
+
+  <div class="error">
+    <h6 class="errorName" *ngIf="colorForm.get('description').invalid && colorForm.get('description').dirty">Color description must be between 3-13 characters with no trailing whitespace</h6>
+  </div>
+</div>
+
+
+

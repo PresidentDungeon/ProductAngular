@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../shared/Product";
-import {ProductsService} from "../shared/products.service";
+import {Product} from '../shared/Product';
+import {ProductsService} from '../shared/products.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,7 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   loading: boolean = true;
 
-  constructor(private productService: ProductsService ) { }
+  constructor(private productService: ProductsService, private router: Router ) { }
   ngOnInit(): void {
     this.getProducts();
   }
@@ -22,7 +23,8 @@ export class ProductsComponent implements OnInit {
   }
 
   deleteProduct(id: number): void{
-    this.productService.deleteProduct(id).subscribe((product) => this.getProducts());
+    this.productService.deleteProduct(id).subscribe(product => this.getProducts(),
+        error => {if (error.status === 401){this.router.navigate(['/login']);}});
   }
 
 }

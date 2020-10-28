@@ -1,0 +1,27 @@
+<h1>Product Details</h1>
+<h2 *ngIf="loading">Loading...</h2>
+<div class="container" *ngIf="!loading">
+  <h1>{{this.color.colorDescription}} ({{this.color.id}})</h1>
+
+  <form *ngIf="userRole === 'Admin'" [formGroup]="colorForm" (ngSubmit)="updateColor()">
+    <label>
+      Color description:
+      <input id="name" type="text" formControlName="description" minlength="3" maxlength="13" pattern="^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$">
+    </label>
+
+    <button type="submit" [disabled]="!colorForm.valid">Update</button>
+  </form>
+
+  <p align="center">{{error}}</p>
+  <button (click)="goBack();">Go back</button>
+</div>
+
+<div class="container" *ngIf="found === false">
+  <h2>Color not found</h2>
+  <button class="update" (click)="goBack();">Go back</button>
+</div>
+
+<div class="error">
+  <h6 class="errorName" *ngIf="colorForm.get('description').invalid && colorForm.get('description').dirty">Color description must be between 3-13 characters with no trailing whitespace</h6>
+</div>
+
