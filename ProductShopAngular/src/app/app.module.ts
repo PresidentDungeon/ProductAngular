@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { ColorsComponent } from './colors/colors/colors.component';
 import { ColorAddComponent } from './colors/color-add/color-add.component';
 import { ColorDetailsComponent } from './colors/color-details/color-details.component';
+import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   declarations: [
@@ -30,13 +31,14 @@ import { ColorDetailsComponent } from './colors/color-details/color-details.comp
     ColorAddComponent,
     ColorDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ProgressbarModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

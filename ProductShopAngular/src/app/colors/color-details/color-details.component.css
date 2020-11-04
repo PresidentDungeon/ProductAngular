@@ -72,9 +72,9 @@ form button:disabled{
 
 .error{
   position: absolute;
-  top: 212px;
-  left: 890px;
-  width: 200px;
+  top: 200px;
+  left: 900px;
+  width: 300px;
 }
 
 input.ng-dirty.ng-invalid {
@@ -85,4 +85,10 @@ p{
   position: relative;
   top: 15px;
   color: red;
+}
+
+progressbar{
+  width: 300px;
+  margin-left: auto;
+  margin-right:auto;
 }

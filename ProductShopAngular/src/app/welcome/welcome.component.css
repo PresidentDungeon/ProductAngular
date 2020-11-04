@@ -26,11 +26,11 @@ section .row img {
 
 .btn{
   position: relative;
-  left: 500px;
+  left: 478px;
+  bottom: 25px;
   border: 1px black inset;
   width: 150px;
   height: 60px;
-  background-image: url("src/assets/images/button.jpg");
   cursor: pointer;
 }
 
@@ -39,9 +39,12 @@ section .row img {
   font-size: 16px;
   position: relative;
   left: -8px;
+  bottom: 2px;
 }
 
 .small-txt{
   font-size: 10px;
   text-align: center;
+  position: relative;
+  bottom: 20px;
 }

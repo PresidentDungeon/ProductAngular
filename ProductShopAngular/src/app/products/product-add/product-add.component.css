@@ -19,7 +19,7 @@ input, select {
   margin-left: 10px;
 }
 
-.colorSelect{
+#colorselect{
   height: 80px;
 }
 
@@ -86,4 +86,10 @@ p{
   position: relative;
   top: 15px;
   color: red;
+}
+
+progressbar{
+  width: 300px;
+  margin-left: auto;
+  margin-right:auto;
 }

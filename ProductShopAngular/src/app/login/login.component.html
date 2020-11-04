@@ -4,12 +4,12 @@
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <label>
       Username:
-      <input id="username" type="text" formControlName="username">
+      <input class="form-control" id="username" type="text" formControlName="username">
     </label>
 
     <label>
       Password:
-      <input type="password" formControlName="password">
+      <input class="form-control" type="password" formControlName="password">
     </label>
     <button type="submit" [disabled]="!loginForm.valid">Login</button>
   </form>

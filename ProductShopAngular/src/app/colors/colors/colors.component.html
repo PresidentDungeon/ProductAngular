@@ -2,8 +2,8 @@
 
   <h1 align="center">ProductShop Color Display</h1>
   <h3 align="center">Here is our color list:</h3>
-  <h2 *ngIf="loading" align="center">Loading...</h2>
-  <table *ngIf="!loading" class="table">
+  <progressbar class="progress center-block" *ngIf="loading" max="100" [value]="100" type="success" [striped]="true" [animate]="true">Loading...</progressbar>
+  <table *ngIf="!loading" class="table-">
     <tr>
       <th class="header1">ID</th>
       <th>Description</th>
@@ -16,5 +16,5 @@
     </tr>
   </table>
 
-  <button class="register" routerLink="register">Add color!</button>
+  <button class="btn btn-success" routerLink="register">Add color!</button>
 </div>

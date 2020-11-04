@@ -68,8 +68,8 @@ form button:disabled{
 .error{
   position: absolute;
   top: 36px;
-  left: 685px;
-  width: 300px;
+  left: 700px;
+  width: 400px;
 }
 
 input.ng-dirty.ng-invalid {

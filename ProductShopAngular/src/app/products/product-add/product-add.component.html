@@ -1,20 +1,20 @@
 <h1>Register product</h1>
-<h2 *ngIf="loading">Loading...</h2>
+<progressbar class="progress center-block" *ngIf="loading" max="100" [value]="100" type="success" [striped]="true" [animate]="true">Loading...</progressbar>
 <div class="container" *ngIf="!loading">
   <form [formGroup]="productForm" (ngSubmit)="createProduct()">
     <label>
       Product name:
-      <input id="name" type="text" formControlName="name" minlength="3" maxlength="13" pattern="^(?!.* {2})(?=\S)(?=.*\S$)[a-zA-Z0-9 ]+$">
+      <input id="name" type="text" class="form-control" formControlName="name" minlength="3" maxlength="13" pattern="^(?!.* {2})(?=\S)(?=.*\S$)[a-zA-Z0-9 ]+$">
     </label>
 
     <label>
       Product price:
-      <input type="number" formControlName="price">
+      <input type="number" formControlName="price" class="form-control">
     </label>
 
     <label>
       Product type:
-      <select formControlName="type">
+      <select formControlName="type" class="form-control">
         <option value="" disabled>Choose Type</option>
         <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
       </select>
@@ -22,7 +22,7 @@
 
     <label class="colorLabel">
       Product color:
-      <select class="colorSelect" multiple formControlName="color">
+      <select class="form-control" id="colorselect" multiple formControlName="color">
         <option value="" disabled>Choose Color(s)</option>
         <option *ngFor="let color of colors" [value]="color.id">{{color.colorDescription}}</option>
       </select>
@@ -31,7 +31,7 @@
 
   </form>
   <p align="center">{{error}}</p>
-  <button (click)="goBack();">Go back</button>
+  <button class="btn btn-info" (click)="goBack();">Go back</button>
 
   <div class="error">
     <h6 class="errorName" *ngIf="productForm.get('name').invalid && productForm.get('name').dirty">Product name must be between 3-13 characters with no trailing whitespace</h6>

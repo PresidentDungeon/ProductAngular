@@ -14,14 +14,17 @@ form{
 
 input, select {
   height: 40px;
-  flex: 0 0 200px;
+  flex: 0 0 210px;
   margin-left: 10px;
 }
 
-.colorSelect{
+#colorSelect{
   height: 80px;
 }
 
+#dateSelect{
+  width: 20px;
+}
 label {
   display: flex;
   flex-direction: row;
@@ -67,14 +70,14 @@ form button:disabled{
 .errorNumber{
   color: red;
   position: absolute;
-  top: 50px;
+  top: 60px;
 }
 
 .error{
   position: absolute;
-  top: 270px;
-  left: 870px;
-  width: 200px;
+  top: 245px;
+  left: 895px;
+  width: 300px;
 }
 
 input.ng-dirty.ng-invalid {
@@ -85,4 +88,10 @@ p{
   position: relative;
   top: 15px;
   color: red;
+}
+
+progressbar{
+  width: 300px;
+  margin-left: auto;
+  margin-right:auto;
 }

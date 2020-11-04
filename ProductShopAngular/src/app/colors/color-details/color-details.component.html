@@ -1,19 +1,19 @@
 <h1>Product Details</h1>
-<h2 *ngIf="loading">Loading...</h2>
+<progressbar class="progress center-block" *ngIf="loading" max="100" [value]="100" type="success" [striped]="true" [animate]="true">Loading...</progressbar>
 <div class="container" *ngIf="!loading">
   <h1>{{this.color.colorDescription}} ({{this.color.id}})</h1>
 
   <form *ngIf="userRole === 'Admin'" [formGroup]="colorForm" (ngSubmit)="updateColor()">
     <label>
       Color description:
-      <input id="name" type="text" formControlName="description" minlength="3" maxlength="13" pattern="^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$">
+      <input class="form-control" id="name" type="text" formControlName="description" minlength="3" maxlength="13" pattern="^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$">
     </label>
 
     <button type="submit" [disabled]="!colorForm.valid">Update</button>
   </form>
 
   <p align="center">{{error}}</p>
-  <button (click)="goBack();">Go back</button>
+  <button class="btn btn-info" (click)="goBack();">Go back</button>
 </div>
 
 <div class="container" *ngIf="found === false">
