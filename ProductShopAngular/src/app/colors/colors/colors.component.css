@@ -18,9 +18,13 @@ a{
 
 }
 
-.header1, .data1{
+.header1{
   position: relative;
   left: 55px;
+}
+.data1{
+  position: relative;
+  left: 72px;
 }
 
 .btn{

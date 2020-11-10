@@ -5,12 +5,12 @@
   <progressbar class="progress center-block" *ngIf="loading" max="100" [value]="100" type="success" [striped]="true" [animate]="true">Loading...</progressbar>
   <table *ngIf="!loading" class="table-">
     <tr>
-      <th class="header1">ID</th>
-      <th>Description</th>
+      <th scope="col" class="header1">ID</th>
+      <th scope="col">Description</th>
       <th></th>
     </tr>
     <tr class="data" *ngFor="let color of colors">
-      <td><a class="data1" routerLink="/colors/{{color.id}}">{{color.id}}</a></td>
+      <th class="row"><a class="data1" routerLink="/colors/{{color.id}}">{{color.id}}</a></th>
       <td><a routerLink="/colors/{{color.id}}">{{color.colorDescription}}</a></td>
       <td (click)="deleteColor(color.id);"><button>X</button></td>
     </tr>
