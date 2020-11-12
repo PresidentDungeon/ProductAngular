@@ -19,7 +19,7 @@ export class AuthenticationService {
     return this.http.post<any>(environment.apiUrl + '/login', { username, password })
       .pipe(map(response => {
         const token = response.token;
-        const role = response.role;
+        const role = (JSON.parse(atob(token.split('.')[1]))['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
         if (token !== null) {
           localStorage.setItem('loggedUser', JSON.stringify({ username: username, role: role, token: token }));
           return true;
