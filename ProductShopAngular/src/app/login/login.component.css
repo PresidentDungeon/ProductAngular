@@ -32,6 +32,7 @@ label {
 form button{
   position: relative;
   left: -250px;
+  top: -40px;
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -44,6 +45,7 @@ form button{
   cursor: pointer;
 }
 
+
 form button:disabled{
   cursor: auto;
   background-color: rgba(96,96,96,0.20)
@@ -52,6 +54,20 @@ form button:disabled{
 h1, h2{
   text-align: center;
 }
+
+.checkbox{
+  width: 20px;
+  position: relative;
+  left: -344px;
+}
+
+.checkboxLabel{
+  position: relative;
+  left: -55px;
+  top: -44px;
+}
+
+
 
 .errorUsername {
   color: red;

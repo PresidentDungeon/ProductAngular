@@ -11,8 +11,14 @@
       Password:
       <input class="form-control" type="password" formControlName="password">
     </label>
+
+      <input type="checkbox" class="checkbox" id="rememberBe" name="saveLogin" [checked]="saveLogin" [(ngModel)]="saveLogin" [ngModelOptions]="{standalone: true}">
+      <label class="checkboxLabel" for="rememberBe">Remember me</label>
+
     <button type="submit" [disabled]="!loginForm.valid">Login</button>
   </form>
+
+
 
 
   <div class="error">

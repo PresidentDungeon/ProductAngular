@@ -16,14 +16,23 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  loading: boolean = false;
+  saveLogin: boolean = false;
   errorMsg: string = '';
 
   constructor(private router: Router, private authService: AuthenticationService,
               private location: Location) { }
 
   ngOnInit(): void {
+
     this.authService.logout();
+    const loginInfo = this.authService.getLoginInformation();
+    if (loginInfo !== null) {
+      this.loginForm.patchValue({
+        username: loginInfo.username,
+        password: loginInfo.password
+      });
+      this.saveLogin = true;
+    }
   }
 
   login(): void{
@@ -31,7 +40,16 @@ export class LoginComponent implements OnInit {
     const username: string = loginData.username;
     const password: string = loginData.password;
 
-    this.authService.login(username, password).subscribe(success => {this.location.back();},
+    this.authService.login(username, password).subscribe(success => {
+      debugger;
+      if(this.saveLogin){
+        this.authService.saveLogin(username, password);
+      }
+      else{
+        this.authService.forgetLogin();
+      }
+
+      this.location.back();},
         error => {this.errorMsg = error.error;});
   }
 

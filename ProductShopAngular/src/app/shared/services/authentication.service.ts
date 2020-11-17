@@ -68,4 +68,16 @@ export class AuthenticationService {
     }
   }
 
+  saveLogin(username: string, password: string): void{
+    localStorage.setItem('loginForm', JSON.stringify({ username: username, password: password}));
+  }
+
+  forgetLogin(): void{
+    localStorage.removeItem('loginForm');
+  }
+
+  getLoginInformation(): any{
+    return JSON.parse(localStorage.getItem('loginForm'));
+  }
+
 }
