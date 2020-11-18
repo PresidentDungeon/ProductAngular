@@ -61,7 +61,8 @@ export class AuthenticationService {
   getRole(): string{
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     if (loggedUser !== null){
-      return loggedUser.role;
+
+      return (JSON.parse(atob(loggedUser.token.split('.')[1]))['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
     }
     else{
       return null;
