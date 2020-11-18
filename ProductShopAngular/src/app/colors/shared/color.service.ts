@@ -26,6 +26,10 @@ export class ColorService {
     return this.http.get<Color[]>(environment.apiUrl + '/color');
   }
 
+  getColorsTest(filter: string): Observable<any>{
+    return this.http.get<Observable<any>>(environment.apiUrl + '/color/test' + filter);
+  }
+
   getColorById(id: number): Observable<Color>{
     return this.http.get<Color>(environment.apiUrl + '/color/' + id);
   }

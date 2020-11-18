@@ -13,13 +13,47 @@ export class ColorsComponent implements OnInit {
   colors: Color[];
   loading: boolean = true;
 
+  colorsTest: Color[];
+  loadingTest: boolean = false;
+
+  totalItems: number;
+  currentPage: number = 1;
+  itemsPrPage: number = 10;
+  smallnumPages: number = 0;
+
+  pageChanged($event: any): void {
+    if($event.page !== this.currentPage){
+      this.currentPage = $event.page;
+      console.log($event);
+      this.getColorsTest();
+    }
+  }
+
   constructor(private colorService: ColorService, private router: Router ) { }
   ngOnInit(): void {
     this.getColors();
+    this.getColorsTest();
   }
 
   getColors(): void{
     this.colorService.getColors().subscribe((colors) => {this.colors = colors;}, error => {}, () => {this.loading = false;});
+  }
+
+  itemsPrPageUpdate(): void{
+    this.smallnumPages = Math.ceil(this.totalItems/this.itemsPrPage);
+    this.currentPage = 1;
+    this.getColorsTest();
+  }
+
+  getColorsTest(): void{
+
+    let filter = `?CurrentPage=${this.currentPage}&ItemsPrPage=${this.itemsPrPage}`;
+    this.loadingTest = true;
+
+    this.colorService.getColorsTest(filter).subscribe((FilterList) => {
+      this.totalItems = FilterList.totalItems;
+      this.colorsTest = FilterList.list;
+      }, error => {}, () => {this.loadingTest = false;});
   }
 
   deleteColor(id: number): void{

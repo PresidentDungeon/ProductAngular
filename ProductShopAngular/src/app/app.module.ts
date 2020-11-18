@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -37,7 +38,8 @@ import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        ProgressbarModule
+        ProgressbarModule,
+      PaginationModule.forRoot()
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,3 +18,62 @@
 
   <button class="btn btn-success" routerLink="register">Add color!</button>
 </div>
+
+
+
+
+
+
+
+
+
+<progressbar class="progress" *ngIf="loadingTest" max="100" [value]="100" type="success" [striped]="true" [animate]="true">Loading...</progressbar>
+<table *ngIf="!loadingTest" class="table--">
+  <tr>
+    <th scope="col" class="header1-">ID</th>
+    <th scope="col">Description</th>
+    <th></th>
+  </tr>
+  <tr class="data" *ngFor="let color of colorsTest">
+    <th class="row"><a class="data1" routerLink="/colors/{{color.id}}">{{color.id}}</a></th>
+    <td><a routerLink="/colors/{{color.id}}">{{color.colorDescription}}</a></td>
+    <td (click)="deleteColor(color.id);"><button>X</button></td>
+  </tr>
+
+
+<div class="row">
+  <div class="col-xs-12 col-12">
+    <pagination
+      [directionLinks]="false"
+      [totalItems]="totalItems"
+      [(ngModel)]="currentPage"
+      (pageChanged)="pageChanged($event)"
+      [itemsPerPage]="itemsPrPage"
+      (numPages)="smallnumPages = $event">
+
+    </pagination>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-12">
+    <pager
+      [totalItems]="totalItems"
+      [(ngModel)]="currentPage"
+      (pageChanged)="pageChanged($event)"
+      pageBtnClass="btn"
+      [itemsPerPage]="itemsPrPage"
+      class="pull-left">
+    </pager>
+  </div>
+</div>
+</table>
+
+<label>
+  Items Pr Page:
+  <select class="form-control" [(ngModel)]="itemsPrPage" (ngModelChange)="itemsPrPageUpdate()">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+  </select>
+</label>
