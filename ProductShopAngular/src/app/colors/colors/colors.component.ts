@@ -46,7 +46,6 @@ export class ColorsComponent implements OnInit {
   }
 
   getColorsTest(): void{
-
     let filter = `?CurrentPage=${this.currentPage}&ItemsPrPage=${this.itemsPrPage}`;
     this.loadingTest = true;
 
